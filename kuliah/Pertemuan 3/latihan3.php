@@ -36,7 +36,7 @@
                 <?php endfor;?>
             </tr>
         </tr>
-</table>
+</table> 
 
 </body>
 </html>
