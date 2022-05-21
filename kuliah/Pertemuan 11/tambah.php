@@ -9,7 +9,7 @@ if(isset($_POST["tambah"])) {
     tambah($_POST);
 
     if(tambah($_POST) > 0) {
-        echo "<script>alert('databerhasil di tambahkan'); document.location.href = 'latihan1.php'; </script>"
+        echo "<script>alert('databerhasil di tambahkan'); document.location.href = 'latihan1.php'; </script>";
     }
 }
 
