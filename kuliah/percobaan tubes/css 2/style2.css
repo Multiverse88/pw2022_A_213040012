@@ -1,0 +1,89 @@
+body {
+  background-color: #b7682e;
+  font-family: "Lora", serif;
+}
+
+.card {
+  border-radius: 30px;
+  margin-bottom: 10px;
+  width: 320px;
+  height: 420px;
+  margin: 10px;
+  box-shadow: 0 0 5px #b7682e;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center !important;
+}
+.card::before {
+  background: #be8126;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  top: -50%;
+  transform: skewY(345deg);
+  transition: 300ms ease-in;
+}
+.card:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+.image {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image img {
+  max-width: 100%;
+  transition: 200ms ease-in;
+}
+.card:hover .image img {
+  width: 78%;
+}
+
+.about-product {
+  position: absolute;
+  bottom: -50px !important;
+  color: white;
+  left: 25%;
+  text-align: center;
+  transition: 300ms ease-in;
+  padding-top: -20px;
+  padding-left: 15px;
+}
+
+.card:hover .about-product {
+  bottom: 3px !important;
+  color: black;
+}
+.button {
+  color: white;
+  width: 150px;
+  background: #be8126;
+  border-color: #ffe5be;
+}
+.card-body {
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #be8126;
+  transition: 300ms;
+}
+
+.btn:hover {
+  transform: translateY(-10px);
+}
+
+.contact {
+  background-color: #ffe5be;
+}
+iframe {
+  border-radius: 20px;
+}
+footer a {
+  text-decoration: none;
+}

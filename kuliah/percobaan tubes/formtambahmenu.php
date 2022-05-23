@@ -1,19 +1,20 @@
 <?php 
 
-require 'functions1.php';
+require 'functions.php';
 // ketika tombol tambah di klik
 
-if(isset($_POST["tambah1"])) {
+if(isset($_POST["tambah"])) {
     // jalankan fungsi tambah()
 
     tambah($_POST);
 
     if(tambah($_POST) > 0) {
-        echo "<script>alert('databerhasil di tambahkan'); document.location.href = 'latihan1.php'; </script>";
+        echo "<script>alert('databerhasil di tambahkan'); document.location.href = 'databasemenu.php'; </script>";
     }
 }
 
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,42 +25,29 @@ if(isset($_POST["tambah1"])) {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Tambah Data Mahasiswa</title>
+    <title>Tambah Data Menu</title>
   </head>
   <body>
     
     <div class="container">
-      <h1>Form Tambah Data  Mahasiswa</h1>
+      <h1>Form Tambah Data  Menu</h1>
 
-      <a href="latihan1.php" class="btn btn-primary">Kembali ke data mahasiswa</a>
+      <a href="databasemenu.php" class="btn btn-primary">Kembali ke data menu</a>
 
     <div class="row mt-3">
         <div class="col-5">
 
         <form action="" method="POST" autocomplete="off">
-            <!-- Form NPM -->
+        <!-- Form Nama menu -->
         <div class="mb-3">
-            <label for="npm" class="form-label">Npm</label>
-            <input type="text" class="form-control" id="npm" name="npm" required maxlength="9"
-             minlength="9" style = "width: 150px">
+            <label for="namamenu" class="form-label">Nama menu</label>
+            <input type="text" class="form-control" id="namamenu" name="namamenu" required>
         </div>
 
-        <!-- Form Nama -->
+        <!-- Form harga menu -->
         <div class="mb-3">
-            <label for="nama" class="form-label">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" required>
-        </div>
-
-        <!-- Form Email -->
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-
-        <!-- Form Jurusan -->
-        <div class="mb-3">
-            <label for="jurusan" class="form-label">Jurusan</label>
-            <input type="text" class="form-control" id="jurusan" name="jurusan" required>
+            <label for="harga-menu" class="form-label">Harga menu</label>
+            <input type="text" class="form-control" id="hargamenu" name="hargamenu" required>
         </div>
 
         <!-- Form Gambar  -->
@@ -68,7 +56,7 @@ if(isset($_POST["tambah1"])) {
             <input type="text" class="form-control" id="gambar" name="gambar">
         </div>
         <!-- Button submit -->
-        <button type="submit" class="btn btn-primary" name="tambah1">Tambah data mahasiswa</button>
+        <button type="submit" class="btn btn-primary" name="tambah">Tambah data menu</button>
         </form>
         
 
