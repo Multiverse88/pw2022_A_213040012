@@ -33,7 +33,8 @@ if (isset($_POST['submit'])) {
  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    
  
     <title>Kaki bukit.</title>
 </head>
@@ -44,7 +45,7 @@ if (isset($_POST['submit'])) {
  
     <div class="container">
         <form action="" method="POST" class="login-email">
-            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
+            <p class="login-text" style="font-size: 30px; font-weight: 800;">Kaki Bukit.</p>
             <div class="input-group">
                 <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
             </div>
@@ -54,7 +55,7 @@ if (isset($_POST['submit'])) {
             <div class="input-group">
                 <button name="submit" class="btn">Login</button>
             </div>
-            <p class="login-register-text">Anda belum punya akun? <a href="register.php">Register</a></p>
+            <p class="register-text">Anda belum punya akun? <a href="register.php">Register</a></p>
         </form>
     </div>
 </body>

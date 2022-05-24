@@ -10,8 +10,7 @@
 body {
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(img/logincover.jpg);
+  background-image: url(img/cover1.jpg);
   background-position: center;
   background-size: cover;
   display: flex;
@@ -81,14 +80,18 @@ body {
   background: #f5d1ad;
 }
 
-.login-register-text {
+.register-text {
   color: #111;
   font-weight: 600;
 }
 
-.login-register-text a {
+.register-text a {
   text-decoration: none;
-  color: #f5d1ad;
+  color: #d4af8ae8;
+}
+.register-text a :hover {
+  text-decoration: none;
+  color: #a37649e8;
 }
 
 .container-logout {
