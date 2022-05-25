@@ -18,7 +18,6 @@ $menu = query("SELECT * FROM listmenu");
     <title>Daftar Menu</title>
   </head>
   <body>
-    
     <div class="container">
       <h1>Daftar Menu</h1>
 

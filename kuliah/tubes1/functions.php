@@ -18,18 +18,18 @@ function query($query) {
 }
 
 function tambah($data) {
-    $conn = koneksi();
+    global $conn;
+    $namamenu = $data["namamenu"];
+ $hargamenu = $data["hargamenu"]; 
+ $gambarmenu = $data["gambarmenu"]; 
 
-    $namamenu = $data["nama menu"];
-    $hargamenu = $data["harga menu"];
-    $gambar = $data["gambar"];
-    
+ //  query insert data
+$query = "INSERT INTO listmenu
+VALUES
+('', '$namamenu', '$hargamenu', '$gambarmenu')
+";
+mysqli_query($conn, $query);
 
-    $query = "INSERT INTO listmenu VALUES (null, '$namamenu', '$hargamenu', '$gambar')";
-
-    mysqli_query($conn, $query) or die (mysqli_error($conn));
-
-    return mysqli_affected_rows($conn);
-
+return mysqli_affected_rows($conn);
 }
 ?>
