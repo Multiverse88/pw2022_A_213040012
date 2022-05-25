@@ -1,18 +1,16 @@
 <?php 
-
 require 'functions.php';
+$conn = mysqli_connect("localhost", "root", "" ,"tubes_213040012");
 // ketika tombol tambah di klik
+if( isset($_POST["submit"]) ){
 
-if(isset($_POST["tambah"])) {
-    // jalankan fungsi tambah()
-
-    tambah($_POST);
-
-    if(tambah($_POST) > 0) {
-        echo "<script>alert('databerhasil di tambahkan'); document.location.href = 'databasemenu.php'; </script>";
-    }
-}
-
+//cek pengiriman data
+  if( tambah($_POST) > 0) {
+    echo "<script>alert('databerhasil di tambahkan'); document.location.href = 'latihan1.php'; </script>";
+  } else {
+    echo "<script>alert('databerhasil di tambahkan'); document.location.href = 'databasemenu.php'; </script>";
+  }
+} 
 ?>
 
 <!doctype html>
@@ -33,35 +31,25 @@ if(isset($_POST["tambah"])) {
       <h1>Form Tambah Data  Menu</h1>
 
       <a href="databasemenu.php" class="btn btn-primary">Kembali ke data menu</a>
+      <form action="" method="POST">
 
-    <div class="row mt-3">
-        <div class="col-5">
-
-        <form action="" method="POST" autocomplete="off">
-        <!-- Form Nama menu -->
-        <div class="mb-3">
-            <label for="namamenu" class="form-label">Nama menu</label>
-            <input type="text" class="form-control" id="namamenu" name="namamenu" required>
-        </div>
-
-        <!-- Form harga menu -->
-        <div class="mb-3">
-            <label for="harga-menu" class="form-label">Harga menu</label>
-            <input type="text" class="form-control" id="hargamenu" name="hargamenu" required>
-        </div>
-
-        <!-- Form Gambar  -->
-        <div class="mb-3">
-            <label for="gambar" class="form-label">Gambar</label>
-            <input type="text" class="form-control" id="gambar" name="gambar">
-        </div>
-        <!-- Button submit -->
-        <button type="submit" class="btn btn-primary" name="tambah">Tambah data menu</button>
-        </form>
-        
-
-        </div>
-    </div>
+      <ul>
+        <li>
+          <label for="namamenu">Nama menu</label>
+          <input type="text" name="namamenu" id="namamenu">
+        </li>
+        <li> 
+          <label for="hargamenu">Harga menu</label>
+          <input type="text" name="hargamenu" id="hargamenu"></li>
+        <li> 
+          <label for="gambarmenu">Gambar  menu</label>
+          <input type="text" name="gambarmenu" id="gambarmenu"></li>
+        <li>
+          <button type="submit" name="submit">Submit</button>
+        </li>
+      </ul>
+      </form>
+   
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
