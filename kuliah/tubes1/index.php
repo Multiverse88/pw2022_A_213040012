@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
         </form>
 
         <div class="halaman-admin register-text">
-            <a href="loginadmin.php">Halaman Admin</a>
+            <a href="formtambahmenu.php">Halaman Admin</a>
         </div>
     </div>
 </body>

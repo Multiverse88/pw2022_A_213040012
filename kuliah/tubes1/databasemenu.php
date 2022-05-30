@@ -2,7 +2,12 @@
 require 'functions.php';
 
 $menu = query("SELECT * FROM listmenu");
+$makanan = query("SELECT * FROM list_makanan");
 
+// tombol cari
+if(isset($_POST["cari"]) ) {
+  $menu = cari($_POST["keyword"]);
+} 
 ?>
 
 <!doctype html>
@@ -21,7 +26,14 @@ $menu = query("SELECT * FROM listmenu");
     <div class="container">
       <h1>Daftar Menu</h1>
 
-      <a href="formtambahmenu.php" class="btn btn-primary">Tambah Data Menu</a>
+      <form action="" method="POST">
+        <input type="text" name="keyword" size="20" autofocus placeholder="Masukan Nama Menu" autocomplete="off">
+        <button type="submit" name="cari">Cari</button>
+      </form>
+      <br>
+      <h3>Minuman</h3>
+      <a href="formtambahmenu.php" class="btn btn-primary">Tambah Data Menu Minuman</a>
+      <a href="formtambahmakanan.php" class="btn btn-primary">Tambah Data Menu Makanan</a>
 
       <table class="table">
         <thead>
@@ -40,17 +52,54 @@ $menu = query("SELECT * FROM listmenu");
             <td>
               <img src="img/<?= $mn["gambar"]; ?>" width="50" class="rounded-circle">
             </td>
-            <td><?= $mn["nama menu"]; ?></td>
-            <td><?= $mn["harga menu"]; ?></td>
+            <td><?= $mn["nama_menu"]; ?></td>
+            <td><?= $mn["harga_menu"]; ?></td>
             <td>
-              <a href="" class="btn badge bg-warning">edit</a>
-              <a href="" class="btn badge bg-danger">delete</a>
+              <a href="ubah.php?id=<?= $mn["id"]; ?>" class="btn badge bg-warning">edit</a>
+              <a href="hapus.php?id=<?= $mn["id"]; ?>" class="btn badge bg-danger" onclick="
+              return confirm('Apakah yakin akan menghapus data?');">delete</a>
             </td>
           </tr>
           <?php } ?>
         </tbody>
       </table>
     </div>
+
+  <!-- list menu makanan -->
+  <div class="container">
+      <h3>Makanan</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Gambar</th>
+            <th scope="col">Nama Menu makanan</th>
+            <th scope="col">Harga makanan</th>
+         
+          </tr>
+        </thead>
+        <tbody>
+          <?php $no = 1; foreach($makanan as $mkn) { ?>
+          <tr class="align-middle">
+            <th scope="row">
+              <?= $no++; ?>
+            </th>
+            <td>
+              <img src="img/<?= $mkn["gambarmakanan"]; ?>" width="50" class="rounded-circle">
+            </td>
+            <td><?= $mkn["namamakanan"]; ?></td>
+            <td><?= $mkn["hargamakanan"]; ?></td>
+            <td>
+              <a href="ubahmkn.php?id=<?= $mkn["id"]; ?>" class="btn badge bg-warning">edit</a>
+              <a href="hapusmkn.php?id=<?= $mkn["id"]; ?>" class="btn badge bg-danger" onclick="
+              return confirm('Apakah yakin akan menghapus data?');">delete</a>
+            </td>
+          </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 

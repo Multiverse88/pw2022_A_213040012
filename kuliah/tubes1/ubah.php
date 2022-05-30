@@ -1,15 +1,23 @@
 <?php 
 require 'functions.php';
-$conn = mysqli_connect("localhost", "root", "", "tubes_213040012");
-// ketika tombol tambah di klik
-if( isset($_POST["submit"]) ){
 
-//cek pengiriman data
-  if( tambah($_POST) > 0) {
+// ambil data di url 
+$id = $_GET["id"];
+//query data menu berdasarkan id
+$mnu = query("SELECT * FROM listmenu WHERE id = $id")[0];
+
+
+// ketika tombol tambah di klik
+if( isset($_POST["ubah"]) ){
+
+//cek pengiriman ubah data
+  if( ubah($_POST) > 0) {
     echo "<script>
-    alert('databerhasil di tambahkan'); document.location.href = 'databasemenu.php'; </script>";
+    alert('data berhasil di ubah'); document.location.href = 'databasemenu.php'; </script>";
   }
 } 
+
+
 ?>
 
 <!doctype html>
@@ -22,27 +30,29 @@ if( isset($_POST["submit"]) ){
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Tambah Data Menu</title>
+    <title>Ubah Data Menu</title>
   </head>
   <body>
     
     <div class="container">
-      <h1>Form Tambah Data  Menu</h1>
+      <h1>Form Ubah Data  Menu</h1>
+
       <a href="databasemenu.php" class="btn btn-primary">Kembali ke data menu</a>
       <form action="" method="POST">
+      <input type="hidden" name="id" value="<?= $mnu["id"];?>">
       <ul>
         <li>
           <label for="namamenu">Nama menu</label>
-          <input type="text" name="namamenu" id="namamenu" required>
+          <input type="text" name="namamenu" id="namamenu" required value="<?= $mnu["nama_menu"];?>">
         </li>
         <li> 
           <label for="hargamenu">Harga menu</label>
-          <input type="text" name="hargamenu" id="hargamenu" required></li>
+          <input type="text" name="hargamenu" id="hargamenu" required value="<?= $mnu["harga_menu"];?>"></li>
         <li> 
           <label for="gambar">Gambar  menu</label>
-          <input type="text" name="gambar" id="gambar" required></li>
+          <input type="text" name="gambar" id="gambar " required value="<?= $mnu["gambar"];?>"></li>
         <li>
-          <button type="submit" name="submit">Submit</button>
+          <button type="submit" name="ubah">Ubah Data</button>
         </li>
       </ul>
       </form>
