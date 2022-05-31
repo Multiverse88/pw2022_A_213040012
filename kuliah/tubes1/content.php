@@ -1,3 +1,21 @@
+
+
+<?php
+require 'functions.php';
+
+$menu = query("SELECT * FROM listmenu");
+$makanan = query("SELECT * FROM list_makanan");
+
+// tombol cari
+if(isset($_POST["cari"]) ) {
+  $menu = cari($_POST["keyword"]);
+} 
+?>
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,8 +62,7 @@
                   Menu
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#coffe">Coffee</a></li>
-                  <li><a class="dropdown-item" href="#noncoffe">Non Coffe</a></li>
+                  <li><a class="dropdown-item" href="#drink">Drink</a></li>
                   <li><a class="dropdown-item" href="#meal">Meal</a></li>
                 </ul>
               </li>
@@ -69,7 +86,7 @@
    <!-- konten -->
    <!-- About us -->
    <section class="jumbotron text-center p-5">
-     <img src="css 2/img/Profile.jpg" alt="Kaki Bukit" width="250" class="rounded-circle">
+     <img src="img/Profile.jpg" alt="Kaki Bukit" width="250" class="rounded-circle">
     <h1 class="display-4 text-center text-light md-4" id="about-us">About us</h1>
     <p class="lead text-center text-light md-4 p-3">Berdiri sejak 2019, Kaki Bukit merupakan sebuah nama yang sangat mewakili Lembang. Letaknya persis berada di area yang lebih tinggi daripada sekelilingnya namun lebih rendah dari gunung terdekatnya. Nama dengan sebuah harapan dan filosofi yang bersifat merendah / membumi namun sejatinya berada di ketinggian untuk bisa memperhatikan, mempelajari, menjangkau, dan memaknai apa yang terjadi di sekelilingnya.</p>
     </section>
@@ -84,165 +101,32 @@
           <!-- Coffe start -->
           <div class="row">
             <div class="col-md-3">
-              <h5 class="text-start text-light" id="coffe">Coffe</h5>
+              <h5 class="text-start text-light" id="drink">Drink</h5>
             </div>
         </div>
         <div class="row">
+        <?php $no = 1; foreach($menu as $mn) { ?>
           <div class="col-md-4 mb-3">
               <div class="card text-center">
                 <div class="image">
-                  <img src="css 2/img/Cappucino.png" alt="Cappucino" width="280">
+                  <img src="img/<?= $mn["gambar"]; ?>" width="280">
                 </div>
                 <div class="about-product text-center">
-                  <h4>Cappucino</h4>
-                  <h5>20.<small>000</small></h5>
+                  <h4><?= $mn["nama_menu"]; ?></h4>
+                  <h5><?= $mn["harga_menu"]; ?></h5>
                   <button class="btn btn-success">Order</button>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/espresso.png" alt="Espresso" width="280">
-                </div>
-                <div class="about-product text-center">
-                  <h4>Espresso</h4>
-                  <h5>18.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/kusuma.png" alt="Kusuma" width="280">
-                </div>
-                <div class="about-product text-center pl-5">
-                  <h4>Kusuma</h4>
-                  <h5>20.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/Iced Mochaccino.png" alt="Ice Mochaccino" width="280">
-                </div>
-                <div class="about-product text-center">
-                  <h4 class="mx-auto">Mochaccino</h4>
-                  <h5>23.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/long black.png" alt="Long Black" width="280">
-                </div>
-                <div class="about-product text-center">
-                  <h4>Long Black</h4>
-                  <h5>20.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5 class="text-start text-light" id="noncoffe">Non Coffe</h5>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/choco allsunday'.png" alt="Choco" width="280">
-                </div>
-                <div class="about-product text-center mx-auto">
-                  <h4>Choco</h4>
-                  <h5>23.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/Hachimon.png" alt="Hachimon" width="280">
-                </div>
-                <div class="about-product text-center">
-                  <h4>Hachimon</h4>
-                  <h5>23.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/Lemon honey.png" alt="Lemon Honey" width="280">
-                </div>
-                <div class="about-product text-center l-3">
-                  <h4>Lemon Honey</h4>
-                  <h5>23.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5 class="text-start text-light" id="meal">Meal</h5>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/rice bowl.png" alt="Ricebowl" width="400">
-                </div>
-                <div class="about-product text-center pb-2">
-                  <h3>Rice Bowl</h3>
-                  <h5>30.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/soft cookie.png" alt="SoftCookie" width="400">
-                </div>
-                <div class="about-product text-center pb-2">
-                  <h3>Soft Cookie</h3>
-                  <h5>30.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card text-center">
-                <div class="image">
-                  <img src="css 2/img/banana ball.png" alt="Banana" width="400">
-                </div>
-                <div class="about-product text-center pb-2">
-                  <h3>Banana ball</h3>
-                  <h5>30.<small>000</small></h5>
-                  <button class="btn btn-success">Order</button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <?php } ?>
       </div>
       </div>
     </section>
    <!-- Menu end -->
    <!-- location start -->
    <section class="jumbotron text-center">
-     <h1 class="display-4 text-center text-light md-4">Our Location</h1>
-     <iframe id="our-location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.626351320772!2d107.6220733144989!3d-6.81521926855396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e18bccec05ef%3A0x5eb8f21c4c9c0435!2sKaki%20Bukit%20Coffee%20and%20Yard!5e0!3m2!1sid!2sid!4v1641105399329!5m2!1sid!2sid" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+     <h1 class="display-4 text-center text-light md-4"  id="our-location">Our Location</h1>
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.626351320772!2d107.6220733144989!3d-6.81521926855396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e18bccec05ef%3A0x5eb8f21c4c9c0435!2sKaki%20Bukit%20Coffee%20and%20Yard!5e0!3m2!1sid!2sid!4v1641105399329!5m2!1sid!2sid" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
      
    </section>
    <!-- location end -->

@@ -88,7 +88,8 @@
     </div>
     <!-- explore button -->
     <button type="button" class="btn"> 
-      <a href="content.html">Explore</a></button>
+      <a href="content.php">Explore</a>
+    </button>
     <a class="facebook-btn" href="#">
       <img src="css/img/facebook.png">
     </a>
