@@ -29,7 +29,7 @@ if( isset($_POST["submit"]) ){
     <div class="container">
       <h1>Form Tambah Data  Menu</h1>
       <a href="databasemenu.php" class="btn btn-primary">Kembali ke data menu</a>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
       <ul>
         <li>
           <label for="namamenu">Nama menu</label>
@@ -39,10 +39,10 @@ if( isset($_POST["submit"]) ){
           <label for="hargamenu">Harga menu</label>
           <input type="text" name="hargamenu" id="hargamenu" required></li>
         <li> 
-          <label for="gambar">Gambar  menu</label>
-          <input type="text" name="gambar" id="gambar" required></li>
+          <label for="gambar">Gambar menu</label>
+          <input type="file" name="gambar" id="gambarLama" required></li>
         <li>
-          <button type="submit" name="submit">Submit</button>
+          <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </li>
       </ul>
       </form>

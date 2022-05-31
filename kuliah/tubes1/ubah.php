@@ -38,19 +38,21 @@ if( isset($_POST["ubah"]) ){
       <h1>Form Ubah Data  Menu</h1>
 
       <a href="databasemenu.php" class="btn btn-primary">Kembali ke data menu</a>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="id" value="<?= $mnu["id"];?>">
+      <input type="hidden" name="gambarLama" value="<?= $mnu["gambar"];?>">
       <ul>
         <li>
           <label for="namamenu">Nama menu</label>
           <input type="text" name="namamenu" id="namamenu" required value="<?= $mnu["nama_menu"];?>">
         </li>
         <li> 
-          <label for="hargamenu">Harga menu</label>
+          <label for="hargamenu">Harga menu</label><br>
           <input type="text" name="hargamenu" id="hargamenu" required value="<?= $mnu["harga_menu"];?>"></li>
         <li> 
-          <label for="gambar">Gambar  menu</label>
-          <input type="text" name="gambar" id="gambar " required value="<?= $mnu["gambar"];?>"></li>
+          <label for="gambar">Gambar menu</label>
+          <img src="img/<?= $mnu['gambar'];?>" width="100px"><br>
+          <input type="file" name="gambar" id="gambar " required></li>
         <li>
           <button type="submit" name="ubah">Ubah Data</button>
         </li>

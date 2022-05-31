@@ -42,7 +42,7 @@ if( isset($_POST["submit"]) ){
           <label for="gambarmakanan">Gambar makanan</label>
           <input type="text" name="gambarmakanan" id="gambarmakanan" required>
         </li>
-        <button type="submit" name="submit">Submit</button>
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
       </ul>
       
       </form>

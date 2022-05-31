@@ -21,7 +21,12 @@ function tambah($data) {
     global $conn;
     $namamenu = htmlspecialchars($data["namamenu"]);
     $hargamenu = htmlspecialchars($data["hargamenu"]); 
-    $gambar = htmlspecialchars($data["gambar"]); 
+    
+    // upload gambar
+    $gambar = upload();
+    if(!$gambar) {
+        return false;
+    }
 
  //  query insert data
 $query = "INSERT INTO listmenu
@@ -42,12 +47,21 @@ function hapus($id) {
 }
 
 function ubah($data) {
+    global $conn;
     $conn = koneksi();
     $id = $data["id"];
     $namamenu = htmlspecialchars($data["namamenu"]);
     $hargamenu = htmlspecialchars($data["hargamenu"]); 
-    $gambar = htmlspecialchars($data["gambar"]); 
+    $gambarLama = htmlspecialchars($data["gambarLama"]);
 
+    
+    
+    // cek gambar 
+    if( $_FILES['gambar']['error'] === 4) {
+        $gambar = $gambarLama;
+    } else {
+        $gambar = upload();
+    }
  //  query update data
 $query = "UPDATE listmenu SET
             nama_menu = '$namamenu',
@@ -60,8 +74,48 @@ mysqli_query($conn, $query);
 return mysqli_affected_rows($conn);
 }
 
+function upload() {
+    $namaFile = $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName  = $_FILES['gambar']['tmp_name'];
+
+    // mengecek gambar yang di upload
+
+    if( $error === 4) {
+        echo "<script>alert('pilih gambar terlebih dahulu</script>";
+        return false;
+    }
+    // pengecekan type data
+    $ekstensiGambarValid = ['jgp', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+    if( !in_array($ekstensiGambar, $ekstensiGambarValid) ) {
+        echo "<script>alert('yang di upload bukan gambar')</script>";
+        return false; 
+    }
+
+    // cek size
+
+    if($ukuranFile > 2000000) {
+        echo "<script>alert('ukuran gambar terlalu besar!')</script>";
+        return false;
+    }
+    // generate nama
+    $namaFileBaru = uniqid();
+    $namaFileBaru .='.';
+    $namaFileBaru .= $ekstensiGambar;
+    // pemindahan gambar
+    move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+ 
+
+    return $namaFileBaru;
+
+}
 function tambahmkn($data) {
     global $conn;
+    $conn = koneksi();
     $namamakanan = htmlspecialchars($data["namamakanan"]);
     $hargamakanan = htmlspecialchars($data["hargamakanan"]); 
     $gambarmakanan = htmlspecialchars($data["gambarmakanan"]); 
@@ -106,4 +160,6 @@ function cari($keyword) {
 
     return query($query);
 }
+
+
 ?>
