@@ -37,9 +37,7 @@ if (isset($_POST['submit'])) {
     <title>Kaki bukit.</title>
 </head>
 <body>
-    <div class="alert alert-warning" role="alert">
         <?php echo $_SESSION['error']?>
-    </div>
  
     <div class="container">
         <form action="" method="POST" class="login-email">

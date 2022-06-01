@@ -87,3 +87,11 @@ iframe {
 footer a {
   text-decoration: none;
 }
+
+.logout-btn a {
+  transition: 300ms;
+}
+.logout-btn a :hover {
+  background-color: #ffe5be;
+  border-color: #ffe5be;
+}

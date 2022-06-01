@@ -50,7 +50,7 @@ if( isset($_POST["ubah"]) ){
           <input type="text" name="hargamakanan" id="hargamakanan" required value="<?= $mkn["hargamakanan"];?>"></li>
         <li> 
           <label for="gambar">Gambar  menu</label>
-          <input type="text" name="gambarmakanan" id="gambarmakanan" required value="<?= $mkn["gambarmakanan"];?>"></li>
+          <input type="text" name="gambarmakanan" id="gambarmakanan" value="<?= $mkn["gambarmakanan"];?>"></li>
         <li>
           <button type="submit" name="ubah">Ubah Data</button>
         </li>

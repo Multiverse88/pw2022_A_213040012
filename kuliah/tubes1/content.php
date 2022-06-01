@@ -12,10 +12,6 @@ if(isset($_POST["cari"]) ) {
 } 
 ?>
 
-
-
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,9 +27,9 @@ if(isset($_POST["cari"]) ) {
   </head>
   <body>
    <!-- Navbar -->
-   <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+   <nav class="navbar navbar-expand-lg navbar-light bg-transparent" id="top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="halaman1.php">
         <img src="css/img/logo bar.png" /> 
       </a>
       <button
@@ -74,7 +70,7 @@ if(isset($_POST["cari"]) ) {
           <li class="nav-item">
             <a class="nav-link" href="#contact-us">Contact us</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item logout-btn">
             <a class="nav-link" href="logout.php">Logout</a>
           </li>
         </ul>
@@ -163,6 +159,7 @@ if(isset($_POST["cari"]) ) {
    </section>
    <!-- contact end -->
    <!-- footer -->
+   
    <footer class="text-center pb-4">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FFE5BE" fill-opacity="1" d="M0,128L24,138.7C48,149,96,171,144,154.7C192,139,240,85,288,85.3C336,85,384,139,432,138.7C480,139,528,85,576,106.7C624,128,672,224,720,218.7C768,213,816,107,864,80C912,53,960,107,1008,128C1056,149,1104,139,1152,122.7C1200,107,1248,85,1296,90.7C1344,96,1392,128,1416,144L1440,160L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path></svg>
      <p class="text-white">Created by 
@@ -170,7 +167,9 @@ if(isset($_POST["cari"]) ) {
       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
       <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
     </svg>    
+    
     <a class="text-white fw-bold" href="https://www.instagram.com/ainanajalah/">Ainan Bahrul Ihsan - 213040012</a></p>
+    <a class="top-button bottom-50 end-50" href="#top"><img src="css 2/top-button.png" width="50px" alt=""></a>
    </footer>
    <!-- footer end -->
     <!-- Optional JavaScript; choose one of the two! -->

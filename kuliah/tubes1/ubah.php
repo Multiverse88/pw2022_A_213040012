@@ -52,7 +52,7 @@ if( isset($_POST["ubah"]) ){
         <li> 
           <label for="gambar">Gambar menu</label>
           <img src="img/<?= $mnu['gambar'];?>" width="100px"><br>
-          <input type="file" name="gambar" id="gambar " required></li>
+          <input type="file" name="gambar" id="gambar "></li>
         <li>
           <button type="submit" name="ubah">Ubah Data</button>
         </li>
