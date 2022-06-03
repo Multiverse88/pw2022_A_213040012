@@ -5,8 +5,6 @@ require 'functions.php';
       if(registeradmin($_POST) > 0) {
 
         echo "<script> alert('user berhasil di tambahkan!');</script>";
-        echo "<script>
-        alert('databerhasil di tambahkan'); document.location.href = 'halaman1.php'; </script>";
       } else {
         echo mysqli_error($conn);
       }
@@ -46,7 +44,7 @@ require 'functions.php';
             <div class="input-group">
                 <button type="submit" name="register" class="btn">Register</button>
             </div>
-            <p class="login-register-text">Anda sudah punya akun? <a href="index.php">Login </a></p>
+            <p class="login-register-text">Anda sudah punya akun? <a href="loginadmin.php">Login </a></p>
         </form>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->

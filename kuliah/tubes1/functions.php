@@ -161,5 +161,33 @@ function cari($keyword) {
     return query($query);
 }
 
+function registeradmin($data) {
+    global $conn;
+    $conn = koneksi();
+    $username = strtolower(stripslashes($data["username"]));
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
 
+    // pengecekan username yang sama
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE 
+    username = '$username'");
+
+    if( mysqli_fetch_assoc($result) ) {
+        echo "<script> alert ('Username yang sama sudah terdaftar')</script>";
+        return false;
+    }
+    // konfirmasi password
+    if( $password !== $password2) {
+        echo "<script>alert ('Password tidak sama')</script>";
+        return false;
+    }
+    // enkripsi password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // tambah user
+    mysqli_query($conn, "INSERT INTO user VALUE ('', '$username',
+     '$password')" );
+
+     return mysqli_affected_rows($conn);
+}
 ?>

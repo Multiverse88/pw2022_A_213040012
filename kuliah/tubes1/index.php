@@ -10,7 +10,7 @@ if (isset($_SESSION['username'])) {
  
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
+    $password = password_hash($password, PASSWORD_DEFAULT)($_POST['password']);
  
     $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn, $sql);
@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
         </form>
 
         <div class="halaman-admin register-text">
-            <a href="formtambahmenu.php">Halaman Admin</a>
+            <a href="loginadmin.php">Halaman Admin</a>
         </div>
     </div>
 </body>
