@@ -21,6 +21,7 @@ $conn = mysqli_connect('localhost', 'root', '', 'tubes_213040012') or die('KONEK
         }
     }
 
+    $error = true;
 
  }
 
@@ -39,13 +40,16 @@ $conn = mysqli_connect('localhost', 'root', '', 'tubes_213040012') or die('KONEK
     <title>Kaki bukit.</title>
 </head>
 <body>
- 
     <div class="container">
+    
         <form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 34px; font-weight: 800; margin-bottom: -15px;">Kaki Bukit
             <div class="d-flex justify-content-center">
             <img src="img/logo 1.png" style="margin-bottom: 10px;">
             </div>
+            <?php if (isset($error)) : ?>
+    <p style="color: red; font-style:italic; text-align: center;">Username / Password salah</p>
+    <?php endif; ?>
             <div class="input-group">
                 <input type="username" placeholder="Username" id="username" name="username"  required>
             </div>

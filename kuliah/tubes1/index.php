@@ -1,27 +1,30 @@
 <?php 
- 
-require 'config.php';
-error_reporting(0);
- 
-session_start();
-if (isset($_SESSION['username'])) {
-    header("Location: berhasil_login.php");
-}
- 
-if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = password_hash($password, PASSWORD_DEFAULT)($_POST['password']);
- 
-    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-    $result = mysqli_query($conn, $sql);
-    if ($result->num_rows > 0) {
+require 'functions.php';
+$conn = mysqli_connect('localhost', 'root', '', 'tubes_213040012') or die('KONEKSI GAGAL!');
+ if( isset($_POST["login"])) {
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $result = mysqli_query($conn, "SELECT * FROM user_pengguna WHERE
+    username = '$username'");
+
+    if( mysqli_num_rows($result) === 1) {
+
+        // cek password
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $row['username'];
-        header("Location: berhasil_login.php");
-    } else {
-        echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
+        
+        if( password_verify($password, $row["password"]) ) {
+            echo "<script>
+        alert('Selamat datang pelanggan'); document.location.href = 'halaman1.php'; </script>";
+            exit;
+        }
     }
-}
+
+    $error = true;
+
+ }
+
  
 ?>
  
@@ -37,28 +40,30 @@ if (isset($_POST['submit'])) {
     <title>Kaki bukit.</title>
 </head>
 <body>
-        <?php echo $_SESSION['error']?>
- 
     <div class="container">
+    
         <form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 34px; font-weight: 800; margin-bottom: -15px;">Kaki Bukit
             <div class="d-flex justify-content-center">
             <img src="img/logo 1.png" style="margin-bottom: 10px;">
             </div>
+            <?php if (isset($error)) : ?>
+    <p style="color: red; font-style:italic; text-align: center;">Username / Password salah</p>
+    <?php endif; ?>
             <div class="input-group">
-                <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+                <input type="username" placeholder="Username" id="username" name="username"  required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+                <input type="password" placeholder="Password" id="username" name="password"  required>
             </div>
             <div class="input-group">
-                <button name="submit" class="btn">Login</button>
+                <button type="submit" name="login" class="btn">Login</button>
             </div>
-            <p class="register-text">Anda belum punya akun? <a href="register.php">Register</a></p>
+            <p class="register-text">Anda belum punya akun? <a href="registerpengguna.php">Register</a></p>
         </form>
 
         <div class="halaman-admin register-text">
-            <a href="loginadmin.php">Halaman Admin</a>
+            <a href="registrasiadmin.php">Halaman Admin</a>
         </div>
     </div>
 </body>

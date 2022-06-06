@@ -3,7 +3,6 @@ require 'functions.php';
 
     if( isset($_POST["register"])) {
       if(registeradmin($_POST) > 0) {
-
         echo "<script> alert('user berhasil di tambahkan!');</script>";
       } else {
         echo mysqli_error($conn);
@@ -44,7 +43,7 @@ require 'functions.php';
             <div class="input-group">
                 <button type="submit" name="register" class="btn">Register</button>
             </div>
-            <p class="login-register-text">Anda sudah punya akun? <a href="loginadmin.php">Login </a></p>
+            <p class="login register-text">Anda sudah punya akun? <a href="loginadmin.php" style="text-decoration: none;">Login </a></p>
         </form>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->

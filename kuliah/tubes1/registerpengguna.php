@@ -2,16 +2,12 @@
 require 'functions.php';
 
     if( isset($_POST["register"])) {
-      if(registeradmin($_POST) > 0) {
-
-        echo "<script> alert('user berhasil di tambahkan!');</script>";
+      if(registerpengguna($_POST) > 0) {
         echo "<script>
-        alert('databerhasil di tambahkan'); document.location.href = 'halaman1.php'; </script>";
+        alert('databerhasil di tambahkan'); document.location.href = 'index.php'; </script>";
       } else {
         echo mysqli_error($conn);
       }
-
-
     }
 
  ?>
@@ -25,7 +21,7 @@ require 'functions.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Halaman Admin</title>
+    <title>Kaki Buki.</title>
     <style>
      
     </style>
@@ -46,7 +42,7 @@ require 'functions.php';
             <div class="input-group">
                 <button type="submit" name="register" class="btn">Register</button>
             </div>
-            <p class="login-register-text">Anda sudah punya akun? <a href="index.php">Login </a></p>
+            <p class="login-register-text">Anda sudah punya akun?<a href="index.php" style="text-decoration: none;">Login</a></p>
         </form>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
