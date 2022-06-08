@@ -1,6 +1,10 @@
-
-
 <?php
+ session_start();
+  
+ if( !isset($_SESSION["login"])) {
+   header("location : index.php");
+   exit;
+ }
 require 'functions.php';
 
 $menu = query("SELECT * FROM listmenu");
@@ -115,6 +119,25 @@ if(isset($_POST["cari"]) ) {
               </div>
             </div>
             <?php } ?>
+      </div>
+      <div class="row">
+          <h5 class="text-start text-light" id="meal">Meal</h5>
+        </div>
+        <?php $no = 1; foreach($makanan as $mkn) { ?>
+          <div class="col-md-4 mb-3">
+              <div class="card text-center">
+                <div class="image">
+                  <img src="img/<?= $mkn["gambarmakanan"]; ?>" width="280">
+                </div>
+                <div class="about-product text-center">
+                  <h4><?= $mkn["namamakanan"]; ?></h4>
+                  <h5><?= $mkn["hargamakanan"]; ?></h5>
+                  <button class="btn btn-success">Order</button>
+                </div>
+              </div>
+            </div>
+            <?php } ?>
+      </div>
       </div>
       </div>
     </section>

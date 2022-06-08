@@ -59,11 +59,10 @@ $conn = mysqli_connect('localhost', 'root', '', 'tubes_213040012') or die('KONEK
             <div class="input-group">
                 <button type="submit" name="login" class="btn">Login</button>
             </div>
-            <p class="register-text">Anda belum punya akun? <a href="registrasiadmin.php">Register</a></p>
         </form>
 
         <div class="halaman-admin register-text">
-            <a href="registrasiadmin.php">Halaman Admin</a>
+            <a href="index.php">Halaman Pelanggan</a>
         </div>
     </div>
 </body>

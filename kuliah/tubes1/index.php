@@ -1,6 +1,29 @@
 <?php 
+session_start();
 require 'functions.php';
 $conn = mysqli_connect('localhost', 'root', '', 'tubes_213040012') or die('KONEKSI GAGAL!');
+
+// cek cookie
+if(isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
+        $id = $_COOKIE['id'];
+        $key = $_COOKIE['key'];
+    
+
+    // mengambil username berdasarkan id
+    $result = mysqli_query($conn, "SELECT username 
+    FROM user_pengguna WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+
+    if($key === hash('sha256', $row['username'])){
+        $_SESSION['login'] = true;
+    }
+
+    if(isset($_SESSION['login'])) {
+    header("location: halaman1.php");
+    exit;
+    }
+}
+
  if( isset($_POST["login"])) {
 
     $username = $_POST["username"];
@@ -15,6 +38,14 @@ $conn = mysqli_connect('localhost', 'root', '', 'tubes_213040012') or die('KONEK
         $row = mysqli_fetch_assoc($result);
         
         if( password_verify($password, $row["password"]) ) {
+            // set session
+            $_SESSION["login"] = true;
+
+            // cek remember me
+            if(isset($_POST['remember'])){
+                setcookie('id', $row['id'], time() + 60);
+                setcookie('key', hash('sha256', $row['username']), time() + 60);
+            }
             echo "<script>
         alert('Selamat datang pelanggan'); document.location.href = 'halaman1.php'; </script>";
             exit;
@@ -56,14 +87,17 @@ $conn = mysqli_connect('localhost', 'root', '', 'tubes_213040012') or die('KONEK
             <div class="input-group">
                 <input type="password" placeholder="Password" id="username" name="password"  required>
             </div>
+                <label for="remember">Remember me</label>
+                <input type="checkbox" name="remember" id="remember" style="padding-top: -10px;">
             <div class="input-group">
                 <button type="submit" name="login" class="btn">Login</button>
             </div>
+            
             <p class="register-text">Anda belum punya akun? <a href="registerpengguna.php">Register</a></p>
         </form>
 
         <div class="halaman-admin register-text">
-            <a href="registrasiadmin.php">Halaman Admin</a>
+            <a href="loginadmin.php">Halaman Admin</a>
         </div>
     </div>
 </body>
