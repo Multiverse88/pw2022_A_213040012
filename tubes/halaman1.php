@@ -1,11 +1,12 @@
 <?php 
+
   session_start();
   
 if( !isset($_SESSION["login"])) {
-  header("location : index.php");
+  header("location: index.php");
   exit;
 }
-
+require 'functions.php';
 
 ?>
 <!DOCTYPE html>
@@ -98,6 +99,7 @@ if( !isset($_SESSION["login"])) {
     </div>
     <!-- explore button -->
     <button type="button" class="btn"> 
+    
       <a href="content.php">Explore</a>
     </button>
     <a class="facebook-btn" href="#">
