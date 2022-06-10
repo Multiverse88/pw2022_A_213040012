@@ -1,10 +1,4 @@
 <?php 
-session_start();
-  
-if( !isset($_SESSION["login"])) {
-  header("location : index.php");
-  exit;
-}
 require 'functions.php';
 $conn = mysqli_connect("localhost", "root", "", "tubes_213040012");
 // ketika tombol tambah di klik

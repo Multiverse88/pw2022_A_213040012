@@ -1,4 +1,8 @@
 <?php
+if( !isset($_SESSION["login"])) {
+  header("location: index.php");
+  exit;
+}
 require 'functions.php';
 
 $menu = query("SELECT * FROM listmenu");
