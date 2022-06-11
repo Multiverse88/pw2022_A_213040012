@@ -38,6 +38,9 @@ if(isset($_POST["cari"]) ) {
         <button type="submit" id="tombol-cari" name="cari">Cari</button>
       </form>
       <br>
+
+      <?php require 'sorting.php'; ?>
+
       <div id="container">
       <h3>Minuman</h3>
       <a href="formtambahmenu.php" class="tambah btn btn-primary">Tambah Data Menu Minuman</a>
