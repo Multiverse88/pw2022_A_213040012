@@ -160,20 +160,23 @@ if(isset($_POST["cari"]) ) {
        </div>
        <div class="row justify-content-center">
          <div class="col-md-6">
-           <form>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display: none" onload="if(submitted){
+            window.location.href='https://kakibukit.epizy.com/content.php';}"></iframe>
+           <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScvUkaTyxT_W-Li0ei5hEBpeYU5evRhBPNDiCVb1E5eex0BmQ/formResponse" 
+            target="hidden_iframe" onsubmit="submitted=true" method="POST">
   <div class="mb-3">
     <label for="name" class="form-label">Nama</label>
-    <input type="text" class="form-control" id="nama" aria-describedby="nama">
+    <input type="text" class="form-control" id="nama" aria-describedby="nama" name="entry.2102211034">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="entry.1365058197">
   </div>
   <div class="mb-3">
     <label for="pesan" class="form-label">Pesan</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="entry.2118663949"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" value="submit">Submit</button>
 </form>
          </div>
        </div> 
