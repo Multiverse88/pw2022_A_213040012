@@ -10,7 +10,9 @@ $menu = query($query);
 <h3>Minuman</h3>
       <a href="formtambahmenu.php" class="btn btn-primary">Tambah Data Menu Minuman</a>
       <a href="formtambahmakanan.php" class="btn btn-primary">Tambah Data Menu Makanan</a>
+      <a href="cetak.php" target="_blank" class="tambah btn btn-success">Print</a>
       <a href="logoutadmin.php" class="btn btn-danger position-absolute top-0 end-0">Logout</a>
+      <a href="https://docs.google.com/spreadsheets/d/1K2RjmQusPRZzlKHtkumRTB33sZq1O_6J1vOmE8N-BGs/edit?resourcekey#gid=1477784169" class="btn btn-info">Form data</a>
     
       <table class="table">
         <thead>
