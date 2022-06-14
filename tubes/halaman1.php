@@ -67,8 +67,7 @@ require 'functions.php';
                     Menu
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Coffee</a></li>
-                    <li><a class="dropdown-item" href="#">Non Coffe</a></li>
+                    <li><a class="dropdown-item" href="#">Drink</a></li>
                     <li><a class="dropdown-item" href="#">Meal</a></li>
                   </ul>
                 </li>
